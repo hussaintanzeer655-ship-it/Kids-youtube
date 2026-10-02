@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4VF7WNZRR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H4VF7WNZRR');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>YouTube Kids</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f9f9f9;
+  color:#222;
+}
+
+/* HEADER */
+header{
+  height:64px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:0 22px;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+  color:#ff0033;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:#222;
+}
+
+.search-box{
+  flex:1;
+  display:flex;
+  max-width:700px;
+  margin:auto;
+}
+
+.search-box input{
+  width:100%;
+  height:42px;
+  border:1px solid #ccc;
+  border-radius:22px 0 0 22px;
+  padding:0 18px;
+  font-size:16px;
+  outline:none;
+}
+
+.search-box input:focus{
+  border-color:#888;
+}
+
+.search-box button{
+  width:75px;
+  border:1px solid #ccc;
+  border-left:none;
+  border-radius:0 22px 22px 0;
+  background:#f2f2f2;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.search-box button:hover{
+  background:#e5e5e5;
+}
+
+.upload-btn{
+  background:#ff0033;
+  color:white;
+  border:none;
+  padding:11px 17px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.upload-btn:hover{
+  background:#d9002b;
+}
+
+/* LAYOUT */
+.layout{
+  display:flex;
+}
+
+.sidebar{
+  width:220px;
+  background:white;
+  min-height:calc(100vh - 64px);
+  padding:18px 10px;
+  border-right:1px solid #ddd;
+  position:fixed;
+  left:0;
+  top:64px;
+}
+
+.sidebar button{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:5px;
+  border:none;
+  background:white;
+  text-align:left;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.sidebar button:hover{
+  background:#f1f1f1;
+}
+
+.sidebar button.active{
+  background:#ffe8ed;
+  color:#e6002d;
+  font-weight:bold;
+}
+
+.main{
+  margin-left:220px;
+  width:calc(100% - 220px);
+}
+
+/* CHANNEL */
+.channel-header{
+  background:linear-gradient(135deg,#ff1744,#ff6b81);
+  color:white;
+  padding:35px 40px;
+}
+
+.channel-header h1{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.channel-header p{
+  opacity:.95;
+}
+
+/* CATEGORIES */
+.categories{
+  background:white;
+  padding:15px 25px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  border-bottom:1px solid #ddd;
+}
+
+.category{
+  border:none;
+  padding:9px 18px;
+  border-radius:20px;
+  background:#eee;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.category.active,
+.category:hover{
+  background:#222;
+  color:white;
+}
+
+/* CONTENT */
+.content{
+  padding:25px;
+}
+
+.section-title{
+  font-size:24px;
+  margin-bottom:20px;
+}
+
+.results-info{
+  color:#666;
+  margin-top:-12px;
+  margin-bottom:20px;
+}
+
+/* VIDEO GRID */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:24px;
+}
+
+.video-card{
+  cursor:pointer;
+}
+
+.thumbnail{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:12px;
+  overflow:hidden;
+  background:#ddd;
+  position:relative;
+}
+
+.thumbnail img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.25s;
+}
+
+.video-card:hover .thumbnail img{
+  transform:scale(1.04);
+}
+
+.play-icon{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  background:rgba(0,0,0,.75);
+  color:white;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.video-info{
+  display:flex;
+  gap:10px;
+  padding-top:10px;
+}
+
+.channel-icon{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#ff0033;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  flex-shrink:0;
+}
+
+.video-title{
+  font-size:16px;
+  font-weight:bold;
+  line-height:1.35;
+}
+
+.video-meta{
+  color:#777;
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* NO RESULTS */
+.no-results{
+  display:none;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.no-results .emoji{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:500;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.player{
+  width:min(950px,100%);
+  background:#111;
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+}
+
+.player iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  display:block;
+}
+
+.close{
+  position:absolute;
+  right:10px;
+  top:8px;
+  z-index:5;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.8);
+  color:white;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* UPLOAD */
+.upload-box{
+  background:white;
+  width:min(500px,100%);
+  border-radius:15px;
+  padding:25px;
+  position:relative;
+}
+
+.upload-box h2{
+  margin-bottom:20px;
+}
+
+.upload-box input{
+  width:100%;
+  padding:13px;
+  margin-bottom:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.upload-box .add{
+  width:100%;
+  padding:13px;
+  background:#ff0033;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+  header{
+    gap:8px;
+    padding:0 10px;
+  }
+
+  .logo{
+    font-size:17px;
+  }
+
+  .upload-btn{
+    padding:9px 10px;
+    font-size:12px;
+  }
+
+  .sidebar{
+    width:70px;
+    padding:10px 5px;
+  }
+
+  .sidebar button{
+    font-size:0;
+    text-align:center;
+    padding:15px 5px;
+  }
+
+  .sidebar button::first-letter{
+    font-size:20px;
+  }
+
+  .main{
+    margin-left:70px;
+    width:calc(100% - 70px);
+  }
+
+  .channel-header{
+    padding:25px 20px;
+  }
+
+  .channel-header h1{
+    font-size:26px;
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .video-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+
+  .video-title{
+    font-size:14px;
+  }
+
+  .channel-icon{
+    display:none;
+  }
+
+  .search-box input{
+    font-size:13px;
+  }
+
+  .search-box button{
+    width:55px;
+  }
+}
+
+@media(max-width:500px){
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+
+  .search-box{
+    max-width:none;
+  }
+
+  .upload-btn{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+  <div class="logo">
+    ▶ <span>YouTube</span> Kids
+  </div>
+
+  <div class="search-box">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search kids videos..."
+      autocomplete="off"
+    >
+
+    <button id="searchBtn">
+      🔍
+    </button>
+
+  </div>
+
+  <button class="upload-btn" onclick="openUpload()">
+    + Add Video
+  </button>
+
+</header>
+
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <button class="active" onclick="showAll(this)">
+    🏠 Home
+  </button>
+
+  <button onclick="showTrending(this)">
+    🔥 Trending
+  </button>
+
+  <button onclick="filterCategory('Kids',this)">
+    👶 Kids
+  </button>
+
+  <button onclick="filterCategory('Music',this)">
+    🎵 Kids Music
+  </button>
+
+  <button onclick="showFavorites(this)">
+    ❤️ Favorites
+  </button>
+
+</aside>
+
+
+<!-- MAIN -->
+<main class="main">
+
+  <section class="channel-header">
+
+    <h1>🌈 YouTube Kids</h1>
+
+    <p>
+      Fun, music and entertainment for kids!
+    </p>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+  <div class="categories">
+
+    <button
+      class="category active"
+      onclick="filterCategory('All',this)">
+      All
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('Music',this)">
+      🎵 Music
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('Kids',this)">
+      👶 Kids
+    </button>
+
+  </div>
+
+
+  <section class="content">
+
+    <h2
+      class="section-title"
+      id="sectionTitle">
+      Kids Videos
+    </h2>
+
+    <p
+      class="results-info"
+      id="resultsInfo">
+      Browse fun kids videos
+    </p>
+
+
+    <div
+      class="video-grid"
+      id="videoGrid">
+
+
+      <!-- VIDEO 1 -->
+      <article
+        class="video-card"
+        data-title="Kids Fun Video"
+        data-category="Kids"
+        data-channel="YouTube Kids"
+        data-tags="kids fun children cartoon family"
+        onclick="playVideo('hxOApe1P9dM')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/hxOApe1P9dM/hqdefault.jpg"
+            alt="Kids Fun Video">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            K
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Kids Fun Video 🎨
+            </div>
+
+            <div class="video-meta">
+              YouTube Kids • Kids
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 2 -->
+      <article
+        class="video-card"
+        data-title="Wheels on the Bus"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music wheels on the bus cocomelon nursery rhyme bus"
+        onclick="playVideo('e_04ZrNroTo')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/e_04ZrNroTo/hqdefault.jpg"
+            alt="Wheels on the Bus">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Wheels on the Bus 🚌
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 3 -->
+      <article
+        class="video-card"
+        data-title="Bath Song"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music bath song cocomelon nursery rhyme"
+        onclick="playVideo('WRVsOCh907o')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/WRVsOCh907o/hqdefault.jpg"
+            alt="Bath Song">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Bath Song 🛁
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 4 -->
+      <article
+        class="video-card"
+        data-title="Baa Baa Black Sheep"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music baa baa black sheep cocomelon nursery rhyme sheep"
+        onclick="playVideo('MR5XSOdjKMA')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/MR5XSOdjKMA/hqdefault.jpg"
+            alt="Baa Baa Black Sheep">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Baa Baa Black Sheep 🐑
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 5 -->
+      <article
+        class="video-card"
+        data-title="Fun Kids Music"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music children songs nursery rhyme"
+        onclick="playVideo('LrAtBtQnvCE')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/LrAtBtQnvCE/hqdefault.jpg"
+            alt="Fun Kids Music">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Fun Kids Music 🎵
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 6 -->
+      <article
+        class="video-card"
+        data-title="Sing Along Kids"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music sing along children songs"
+        onclick="playVideo('HI5upQGIqmY')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/HI5upQGIqmY/hqdefault.jpg"
+            alt="Sing Along Kids">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Sing Along Kids 🎤
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 7 -->
+      <article
+        class="video-card"
+        data-title="Happy Kids Song"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music happy song children nursery rhyme"
+        onclick="playVideo('UiFjZcOrMO0')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/UiFjZcOrMO0/hqdefault.jpg"
+            alt="Happy Kids Song">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Happy Kids Song 🌈
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 8 -->
+      <article
+        class="video-card"
+        data-title="Kids Music Fun"
+        data-category="Music"
+        data-channel="Kids Music"
+        data-tags="kids music fun children songs nursery rhyme"
+        onclick="playVideo('EN1SJT76JoY')"
+      >
+
+        <div class="thumbnail">
+
+          <img
+            src="https://img.youtube.com/vi/EN1SJT76JoY/hqdefault.jpg"
+            alt="Kids Music Fun">
+
+          <div class="play-icon">▶</div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="channel-icon">
+            M
+          </div>
+
+          <div>
+
+            <div class="video-title">
+              Kids Music Fun 🎶
+            </div>
+
+            <div class="video-meta">
+              Kids Music • Music
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div
+      class="no-results"
+      id="noResults">
+
+      <div class="emoji">🔎</div>
+
+      <h2>No videos found</h2>
+
+      <p>
+        Try searching for another kids video.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+</div>
+
+
+<!-- PLAYER MODAL -->
+<div
+  class="modal"
+  id="playerModal">
+
+  <div class="player">
+
+    <button
+      class="close"
+      onclick="closePlayer()">
+      ×
+    </button>
+
+    <iframe
+      id="videoPlayer"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</div>
+
+
+<!-- UPLOAD MODAL -->
+<div
+  class="modal"
+  id="uploadModal">
+
+  <div class="upload-box">
+
+    <button
+      class="close"
+      onclick="closeUpload()">
+      ×
+    </button>
+
+    <h2>Add Kids Video</h2>
+
+    <input
+      id="videoTitle"
+      type="text"
+      placeholder="Video title">
+
+    <input
+      id="videoUrl"
+      type="text"
+      placeholder="Paste YouTube URL">
+
+    <button
+      class="add"
+      onclick="addVideo()">
+      Add Video
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* PLAYER */
+
+function playVideo(id){
+
+  document.getElementById("videoPlayer").src =
+    "https://www.youtube.com/embed/" +
+    id +
+    "?autoplay=1";
+
+  document.getElementById("playerModal")
+    .classList.add("show");
+}
+
+
+function closePlayer(){
+
+  document.getElementById("playerModal")
+    .classList.remove("show");
+
+  document.getElementById("videoPlayer").src="";
+}
+
+
+/* SEARCH */
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const searchBtn =
+  document.getElementById("searchBtn");
+
+
+function searchVideos(){
+
+  const query =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  const cards =
+    document.querySelectorAll(".video-card");
+
+  let found=0;
+
+  cards.forEach(card=>{
+
+    const searchableText = (
+
+      card.dataset.title + " " +
+      card.dataset.category + " " +
+      card.dataset.channel + " " +
+      card.dataset.tags
+
+    ).toLowerCase();
+
+    const words =
+      query.split(/\s+/)
+        .filter(Boolean);
+
+    const matches =
+      query === "" ||
+      words.every(word =>
+        searchableText.includes(word)
+      );
+
+    if(matches){
+
+      card.style.display="";
+      found++;
+
+    }else{
+
+      card.style.display="none";
+
+    }
+
+  });
+
+
+  document.querySelectorAll(".category")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+
+  document.getElementById("sectionTitle")
+    .textContent =
+      query
+        ? "Search Results"
+        : "Kids Videos";
+
+
+  document.getElementById("resultsInfo")
+    .textContent =
+      query
+        ? found +
+          " video" +
+          (found===1 ? "" : "s") +
+          " found for \"" +
+          query +
+          "\""
+        : "Browse fun kids videos";
+
+
+  document.getElementById("noResults")
+    .style.display =
+      found===0
+        ? "block"
+        : "none";
+}
+
+
+searchBtn.addEventListener(
+  "click",
+  searchVideos
+);
+
+
+searchInput.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Enter"){
+      searchVideos();
+    }
+
+  }
+);
+
+
+/* CATEGORY */
+
+function filterCategory(category,button){
+
+  searchInput.value="";
+
+  document.querySelectorAll(".category")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  const cards =
+    document.querySelectorAll(".video-card");
+
+  let found=0;
+
+  cards.forEach(card=>{
+
+    if(
+      category==="All" ||
+      card.dataset.category===category
+    ){
+
+      card.style.display="";
+      found++;
+
+    }else{
+
+      card.style.display="none";
+
+    }
+
+  });
+
+
+  document.getElementById("sectionTitle")
+    .textContent =
+      category==="All"
+        ? "Kids Videos"
+        : category==="Music"
+          ? "Kids Music"
+          : "Kids";
+
+
+  document.getElementById("resultsInfo")
+    .textContent =
+      found +
+      " video" +
+      (found===1 ? "" : "s");
+
+  document.getElementById("noResults")
+    .style.display="none";
+}
+
+
+/* HOME */
+
+function showAll(button){
+
+  document.querySelectorAll(".sidebar button")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  searchInput.value="";
+
+  filterCategory("All");
+
+  document.querySelectorAll(".category")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  document.querySelector(".category")
+    .classList.add("active");
+}
+
+
+/* TRENDING */
+
+function showTrending(button){
+
+  document.querySelectorAll(".sidebar button")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  searchInput.value="";
+
+  document.querySelectorAll(".video-card")
+    .forEach(card =>
+      card.style.display=""
+    );
+
+  document.getElementById("sectionTitle")
+    .textContent="🔥 Trending Kids Videos";
+
+  document.getElementById("resultsInfo")
+    .textContent="Popular videos";
+
+  document.getElementById("noResults")
+    .style.display="none";
+}
+
+
+/* FAVORITES */
+
+function showFavorites(button){
+
+  document.querySelectorAll(".sidebar button")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  searchInput.value="";
+
+  document.querySelectorAll(".video-card")
+    .forEach(card =>
+      card.style.display="none"
+    );
+
+  document.getElementById("sectionTitle")
+    .textContent="❤️ Favorites";
+
+  document.getElementById("resultsInfo")
+    .textContent=
+      "Your favorite videos will appear here.";
+
+  document.getElementById("noResults")
+    .style.display="block";
+}
+
+
+/* UPLOAD */
+
+function openUpload(){
+
+  document.getElementById("uploadModal")
+    .classList.add("show");
+}
+
+
+function closeUpload(){
+
+  document.getElementById("uploadModal")
+    .classList.remove("show");
+}
+
+
+/* GET YOUTUBE ID */
+
+function getYouTubeID(url){
+
+  const patterns=[
+
+    /youtu\.be\/([^?&]+)/,
+
+    /youtube\.com\/watch\?v=([^?&]+)/,
+
+    /youtube\.com\/embed\/([^?&]+)/,
+
+    /youtube\.com\/shorts\/([^?&]+)/
+
+  ];
+
+  for(const pattern of patterns){
+
+    const match=url.match(pattern);
+
+    if(match){
+      return match[1];
+    }
+
+  }
+
+  return null;
+}
+
+
+/* ADD VIDEO */
+
+function addVideo(){
+
+  const title =
+    document.getElementById("videoTitle")
+      .value.trim();
+
+  const url =
+    document.getElementById("videoUrl")
+      .value.trim();
+
+  if(!title || !url){
+
+    alert(
+      "Please enter a title and YouTube URL."
+    );
+
+    return;
+  }
+
+  const id=getYouTubeID(url);
+
+  if(!id){
+
+    alert(
+      "Please enter a valid YouTube video URL."
+    );
+
+    return;
+  }
+
+
+  const card =
+    document.createElement("article");
+
+  card.className="video-card";
+
+  card.dataset.title=title;
+  card.dataset.category="Music";
+  card.dataset.channel="Kids Music";
+  card.dataset.tags=
+    "kids music children songs video";
+
+
+  card.onclick=function(){
+    playVideo(id);
+  };
+
+
+  card.innerHTML=`
+
+    <div class="thumbnail">
+
+      <img
+        src="https://img.youtube.com/vi/${id}/hqdefault.jpg"
+        alt="${escapeHTML(title)}">
+
+      <div class="play-icon">
+        ▶
+      </div>
+
+    </div>
+
+    <div class="video-info">
+
+      <div class="channel-icon">
+        M
+      </div>
+
+      <div>
+
+        <div class="video-title">
+          ${escapeHTML(title)}
+        </div>
+
+        <div class="video-meta">
+          Kids Music • Music
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+
+  document.getElementById("videoGrid")
+    .prepend(card);
+
+
+  document.getElementById("videoTitle")
+    .value="";
+
+  document.getElementById("videoUrl")
+    .value="";
+
+  closeUpload();
+
+  alert("Video added successfully!");
+}
+
+
+/* SAFE TITLE */
+
+function escapeHTML(text){
+
+  const div=
+    document.createElement("div");
+
+  div.textContent=text;
+
+  return div.innerHTML;
+}
+
+
+/* MODALS */
+
+document.getElementById("playerModal")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+      closePlayer();
+    }
+
+  });
+
+
+document.getElementById("uploadModal")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+      closeUpload();
+    }
+
+  });
+
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    closePlayer();
+    closeUpload();
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
+
