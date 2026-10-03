@@ -10,446 +10,476 @@
   gtag('config', 'G-H4VF7WNZRR');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>YouTube Kids</title>
 
 <style>
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
+  margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f9f9f9;
-  color:#222;
+  background:#f5f7fb;
+  color:#172033;
 }
 
 /* HEADER */
+
 header{
-  height:64px;
+  height:70px;
   background:#fff;
+  border-bottom:1px solid #e5e7eb;
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:18px;
   padding:0 22px;
-  border-bottom:1px solid #ddd;
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:50;
 }
 
 .logo{
   font-size:23px;
-  font-weight:800;
-  color:#ff0033;
+  font-weight:900;
   white-space:nowrap;
 }
 
 .logo span{
-  color:#222;
+  color:#ff1744;
 }
 
-.search-box{
+.search{
   flex:1;
+  max-width:650px;
   display:flex;
-  max-width:700px;
   margin:auto;
 }
 
-.search-box input{
+.search input{
   width:100%;
-  height:42px;
-  border:1px solid #ccc;
-  border-radius:22px 0 0 22px;
+  height:44px;
+  border:1px solid #d9deea;
+  border-right:0;
+  border-radius:24px 0 0 24px;
   padding:0 18px;
-  font-size:16px;
+  font-size:15px;
   outline:none;
 }
 
-.search-box input:focus{
-  border-color:#888;
+.search input:focus{
+  border-color:#ff1744;
 }
 
-.search-box button{
-  width:75px;
-  border:1px solid #ccc;
-  border-left:none;
-  border-radius:0 22px 22px 0;
-  background:#f2f2f2;
+.search button{
+  width:58px;
+  border:0;
+  background:#ff1744;
+  color:#fff;
+  border-radius:0 24px 24px 0;
   cursor:pointer;
   font-size:18px;
 }
 
-.search-box button:hover{
-  background:#e5e5e5;
-}
-
-.upload-btn{
-  background:#ff0033;
-  color:white;
-  border:none;
-  padding:11px 17px;
-  border-radius:20px;
+.addBtn{
+  border:0;
+  background:#111827;
+  color:#fff;
+  padding:12px 17px;
+  border-radius:22px;
   cursor:pointer;
   font-weight:bold;
+  white-space:nowrap;
 }
 
-.upload-btn:hover{
-  background:#d9002b;
+.addBtn:hover{
+  background:#ff1744;
 }
 
 /* LAYOUT */
+
 .layout{
   display:flex;
 }
 
 .sidebar{
   width:220px;
-  background:white;
-  min-height:calc(100vh - 64px);
-  padding:18px 10px;
-  border-right:1px solid #ddd;
+  min-height:calc(100vh - 70px);
+  background:#fff;
+  border-right:1px solid #e5e7eb;
+  padding:18px 12px;
   position:fixed;
   left:0;
-  top:64px;
+  top:70px;
+  overflow-y:auto;
 }
 
-.sidebar button{
+.sideBtn{
   width:100%;
-  padding:14px 16px;
+  border:0;
+  background:transparent;
+  padding:13px 15px;
   margin-bottom:5px;
-  border:none;
-  background:white;
   text-align:left;
-  border-radius:10px;
+  border-radius:12px;
   cursor:pointer;
   font-size:15px;
+  font-weight:700;
+  color:#273142;
 }
 
-.sidebar button:hover{
-  background:#f1f1f1;
+.sideBtn:hover,
+.sideBtn.active{
+  background:#fff0f3;
+  color:#ff1744;
 }
 
-.sidebar button.active{
-  background:#ffe8ed;
-  color:#e6002d;
-  font-weight:bold;
-}
+/* MAIN */
 
 .main{
   margin-left:220px;
   width:calc(100% - 220px);
-}
-
-/* CHANNEL */
-.channel-header{
-  background:linear-gradient(135deg,#ff1744,#ff6b81);
-  color:white;
-  padding:35px 40px;
-}
-
-.channel-header h1{
-  font-size:34px;
-  margin-bottom:8px;
-}
-
-.channel-header p{
-  opacity:.95;
-}
-
-/* CATEGORIES */
-.categories{
-  background:white;
-  padding:15px 25px;
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  border-bottom:1px solid #ddd;
-}
-
-.category{
-  border:none;
-  padding:9px 18px;
-  border-radius:20px;
-  background:#eee;
-  cursor:pointer;
-  white-space:nowrap;
-}
-
-.category.active,
-.category:hover{
-  background:#222;
-  color:white;
-}
-
-/* CONTENT */
-.content{
   padding:25px;
 }
 
-.section-title{
-  font-size:24px;
-  margin-bottom:20px;
+/* HERO */
+
+.hero{
+  background:
+    radial-gradient(circle at 10% 20%,#fff 0,transparent 25%),
+    linear-gradient(135deg,#ff1744,#ff5c8a 45%,#7c4dff);
+  color:white;
+  border-radius:25px;
+  padding:36px;
+  margin-bottom:25px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 15px 35px #00000012;
 }
 
-.results-info{
-  color:#666;
-  margin-top:-12px;
-  margin-bottom:20px;
+.hero:after{
+  content:"🌈 🦄 🐻 🎵 ⭐ 🐰";
+  position:absolute;
+  right:30px;
+  bottom:20px;
+  font-size:35px;
+  opacity:.85;
+}
+
+.hero h1{
+  margin:0 0 9px;
+  font-size:38px;
+}
+
+.hero p{
+  margin:0;
+  opacity:.95;
+  font-size:16px;
+}
+
+/* CATEGORIES */
+
+.categories{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  padding-bottom:15px;
+}
+
+.cat{
+  border:0;
+  padding:10px 19px;
+  border-radius:20px;
+  background:#fff;
+  cursor:pointer;
+  font-weight:bold;
+  box-shadow:0 2px 8px #00000010;
+  white-space:nowrap;
+}
+
+.cat:hover{
+  transform:translateY(-1px);
+}
+
+.cat.active{
+  background:#ff1744;
+  color:#fff;
+}
+
+/* TITLE */
+
+.sectionTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 18px;
+}
+
+.sectionTop h2{
+  margin:0;
+  font-size:24px;
+}
+
+#resultsInfo{
+  color:#687084;
+  font-size:14px;
 }
 
 /* VIDEO GRID */
-.video-grid{
+
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:24px;
+  gap:22px;
 }
 
-.video-card{
-  cursor:pointer;
-}
+/* CARD */
 
-.thumbnail{
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:12px;
+.card{
+  background:#fff;
+  border-radius:17px;
   overflow:hidden;
-  background:#ddd;
+  box-shadow:0 5px 18px #0000000d;
+  cursor:pointer;
+  transition:.25s ease;
   position:relative;
 }
 
-.thumbnail img{
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px #00000018;
+}
+
+.thumb{
   width:100%;
-  height:100%;
+  aspect-ratio:16/9;
   object-fit:cover;
-  transition:.25s;
+  display:block;
+  background:#ddd;
 }
 
-.video-card:hover .thumbnail img{
-  transform:scale(1.04);
+.cardInfo{
+  padding:13px;
 }
 
-.play-icon{
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  background:rgba(0,0,0,.75);
-  color:white;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.video-info{
-  display:flex;
-  gap:10px;
-  padding-top:10px;
-}
-
-.channel-icon{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:#ff0033;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  flex-shrink:0;
-}
-
-.video-title{
+.cardTitle{
   font-size:16px;
-  font-weight:bold;
+  font-weight:800;
   line-height:1.35;
+  margin-bottom:8px;
 }
 
-.video-meta{
-  color:#777;
+.channel{
+  color:#697386;
   font-size:13px;
-  margin-top:5px;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:9px;
+  background:#fff0f3;
+  color:#ff1744;
+  padding:4px 8px;
+  border-radius:10px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.favorite{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:37px;
+  height:37px;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 3px 10px #0003;
+  cursor:pointer;
+  font-size:19px;
+  z-index:2;
+}
+
+.favorite:hover{
+  transform:scale(1.08);
 }
 
 /* NO RESULTS */
-.no-results{
+
+.noResults{
   display:none;
   text-align:center;
   padding:70px 20px;
+  color:#687084;
 }
 
-.no-results .emoji{
+.noResults div{
   font-size:55px;
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
 
-/* MODAL */
+/* MODALS */
+
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:500;
+  background:#000b;
+  z-index:100;
   align-items:center;
   justify-content:center;
   padding:20px;
 }
 
-.modal.show{
-  display:flex;
-}
-
-.player{
+.modalBox{
   width:min(950px,100%);
-  background:#111;
-  border-radius:14px;
+  background:#111827;
+  border-radius:20px;
   overflow:hidden;
   position:relative;
 }
 
-.player iframe{
+.close{
+  position:absolute;
+  right:12px;
+  top:12px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#fff;
+  cursor:pointer;
+  font-size:22px;
+  z-index:3;
+}
+
+.videoFrame{
   width:100%;
   aspect-ratio:16/9;
   border:0;
   display:block;
 }
 
-.close{
-  position:absolute;
-  right:10px;
-  top:8px;
-  z-index:5;
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:rgba(0,0,0,.8);
-  color:white;
-  font-size:24px;
-  cursor:pointer;
-}
-
 /* UPLOAD */
-.upload-box{
-  background:white;
+
+.uploadBox{
+  background:#fff;
   width:min(500px,100%);
-  border-radius:15px;
-  padding:25px;
-  position:relative;
+  padding:27px;
+  border-radius:20px;
 }
 
-.upload-box h2{
-  margin-bottom:20px;
+.uploadBox h2{
+  margin-top:0;
 }
 
-.upload-box input{
+.uploadBox input{
   width:100%;
   padding:13px;
-  margin-bottom:12px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:15px;
+  margin:8px 0;
+  border:1px solid #d7dce5;
+  border-radius:10px;
+  outline:none;
 }
 
-.upload-box .add{
-  width:100%;
-  padding:13px;
-  background:#ff0033;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
+.uploadBox input:focus{
+  border-color:#ff1744;
+}
+
+.uploadBox button{
+  border:0;
+  background:#ff1744;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
   cursor:pointer;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.cancel{
+  background:#687084 !important;
+  margin-left:7px;
 }
 
 /* MOBILE */
+
 @media(max-width:800px){
 
   header{
-    gap:8px;
     padding:0 10px;
+    gap:8px;
   }
 
   .logo{
-    font-size:17px;
+    font-size:18px;
   }
 
-  .upload-btn{
-    padding:9px 10px;
-    font-size:12px;
+  .addBtn{
+    display:none;
   }
 
   .sidebar{
     width:70px;
-    padding:10px 5px;
+    padding:12px 6px;
   }
 
-  .sidebar button{
-    font-size:0;
+  .sideBtn{
     text-align:center;
-    padding:15px 5px;
+    padding:13px 3px;
+    font-size:0;
   }
 
-  .sidebar button::first-letter{
+  .sideBtn::first-letter{
     font-size:20px;
   }
 
   .main{
     margin-left:70px;
     width:calc(100% - 70px);
+    padding:14px;
   }
 
-  .channel-header{
-    padding:25px 20px;
+  .hero{
+    padding:25px;
   }
 
-  .channel-header h1{
-    font-size:26px;
+  .hero h1{
+    font-size:28px;
   }
 
-  .content{
-    padding:15px;
-  }
-
-  .video-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:14px;
-  }
-
-  .video-title{
-    font-size:14px;
-  }
-
-  .channel-icon{
+  .hero:after{
     display:none;
   }
 
-  .search-box input{
-    font-size:13px;
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
   }
 
-  .search-box button{
-    width:55px;
+  .cardTitle{
+    font-size:13px;
   }
 }
 
 @media(max-width:500px){
 
-  .video-grid{
+  .grid{
     grid-template-columns:1fr;
   }
 
-  .search-box{
-    max-width:none;
+  .search input{
+    min-width:0;
   }
 
-  .upload-btn{
-    display:none;
+  .sectionTop h2{
+    font-size:19px;
   }
 }
 </style>
@@ -458,13 +488,14 @@ header{
 <body>
 
 <!-- HEADER -->
+
 <header>
 
   <div class="logo">
     ▶ <span>YouTube</span> Kids
   </div>
 
-  <div class="search-box">
+  <div class="search">
 
     <input
       id="searchInput"
@@ -479,7 +510,7 @@ header{
 
   </div>
 
-  <button class="upload-btn" onclick="openUpload()">
+  <button class="addBtn" onclick="openUpload()">
     + Add Video
   </button>
 
@@ -489,25 +520,26 @@ header{
 <div class="layout">
 
 <!-- SIDEBAR -->
+
 <aside class="sidebar">
 
-  <button class="active" onclick="showAll(this)">
+  <button class="sideBtn active" onclick="showAll(this)">
     🏠 Home
   </button>
 
-  <button onclick="showTrending(this)">
+  <button class="sideBtn" onclick="showTrending(this)">
     🔥 Trending
   </button>
 
-  <button onclick="filterCategory('Kids',this)">
-    👶 Kids
+  <button class="sideBtn" onclick="filterCategory('Kids',this)">
+    🧸 Kids
   </button>
 
-  <button onclick="filterCategory('Music',this)">
+  <button class="sideBtn" onclick="filterCategory('Music',this)">
     🎵 Kids Music
   </button>
 
-  <button onclick="showFavorites(this)">
+  <button class="sideBtn" onclick="showFavorites(this)">
     ❤️ Favorites
   </button>
 
@@ -515,446 +547,780 @@ header{
 
 
 <!-- MAIN -->
+
 <main class="main">
 
-  <section class="channel-header">
+  <section class="hero">
 
     <h1>🌈 YouTube Kids</h1>
 
     <p>
-      Fun, music and entertainment for kids!
+      Fun videos, songs and adventures made for kids.
     </p>
 
   </section>
 
 
-  <!-- CATEGORIES -->
   <div class="categories">
 
-    <button
-      class="category active"
-      onclick="filterCategory('All',this)">
+    <button class="cat active" onclick="filterCategory('All',this)">
       All
     </button>
 
-    <button
-      class="category"
-      onclick="filterCategory('Music',this)">
+    <button class="cat" onclick="filterCategory('Music',this)">
       🎵 Music
     </button>
 
-    <button
-      class="category"
-      onclick="filterCategory('Kids',this)">
-      👶 Kids
+    <button class="cat" onclick="filterCategory('Kids',this)">
+      🧸 Kids
     </button>
 
   </div>
 
 
-  <section class="content">
+  <div class="sectionTop">
 
-    <h2
-      class="section-title"
-      id="sectionTitle">
+    <h2 id="sectionTitle">
       Kids Videos
     </h2>
 
-    <p
-      class="results-info"
-      id="resultsInfo">
-      Browse fun kids videos
-    </p>
+    <span id="resultsInfo"></span>
+
+  </div>
 
 
-    <div
-      class="video-grid"
-      id="videoGrid">
+  <div class="grid" id="videoGrid">
 
 
-      <!-- VIDEO 1 -->
-      <article
-        class="video-card"
-        data-title="Kids Fun Video"
-        data-category="Kids"
-        data-channel="YouTube Kids"
-        data-tags="kids fun children cartoon family"
-        onclick="playVideo('hxOApe1P9dM')"
-      >
+    <!-- EXISTING VIDEOS -->
 
-        <div class="thumbnail">
 
-          <img
-            src="https://img.youtube.com/vi/hxOApe1P9dM/hqdefault.jpg"
-            alt="Kids Fun Video">
+    <article class="card"
+      data-id="XqZsoesa55w"
+      data-title="Baby Shark Dance"
+      data-category="Music"
+      data-channel="Pinkfong"
+      data-tags="baby shark kids music dance shark song">
 
-          <div class="play-icon">▶</div>
+      <button class="favorite"
+        onclick="toggleFavorite(event,'XqZsoesa55w')">
+        ♡
+      </button>
 
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/XqZsoesa55w/hqdefault.jpg"
+        alt="Baby Shark">
+
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Baby Shark Dance 🦈
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            K
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Kids Fun Video 🎨
-            </div>
-
-            <div class="video-meta">
-              YouTube Kids • Kids
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Pinkfong
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 2 -->
-      <article
-        class="video-card"
-        data-title="Wheels on the Bus"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music wheels on the bus cocomelon nursery rhyme bus"
-        onclick="playVideo('e_04ZrNroTo')"
-      >
+    <article class="card"
+      data-id="e_04ZrNroTo"
+      data-title="Wheels on the Bus"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="wheels bus kids music nursery rhyme bus">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'e_04ZrNroTo')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/e_04ZrNroTo/hqdefault.jpg"
-            alt="Wheels on the Bus">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/e_04ZrNroTo/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Wheels on the Bus 🚌
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Wheels on the Bus 🚌
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 3 -->
-      <article
-        class="video-card"
-        data-title="Bath Song"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music bath song cocomelon nursery rhyme"
-        onclick="playVideo('WRVsOCh907o')"
-      >
+    <article class="card"
+      data-id="WRVsOCh907o"
+      data-title="Bath Song"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="bath song kids music nursery rhyme">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'WRVsOCh907o')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/WRVsOCh907o/hqdefault.jpg"
-            alt="Bath Song">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/WRVsOCh907o/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Bath Song 🛁
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Bath Song 🛁
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 4 -->
-      <article
-        class="video-card"
-        data-title="Baa Baa Black Sheep"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music baa baa black sheep cocomelon nursery rhyme sheep"
-        onclick="playVideo('MR5XSOdjKMA')"
-      >
+    <article class="card"
+      data-id="MR5XSOdjKMA"
+      data-title="Baa Baa Black Sheep"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="baa baa black sheep sheep kids music nursery rhyme">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'MR5XSOdjKMA')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/MR5XSOdjKMA/hqdefault.jpg"
-            alt="Baa Baa Black Sheep">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/MR5XSOdjKMA/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Baa Baa Black Sheep 🐑
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Baa Baa Black Sheep 🐑
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 5 -->
-      <article
-        class="video-card"
-        data-title="Fun Kids Music"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music children songs nursery rhyme"
-        onclick="playVideo('LrAtBtQnvCE')"
-      >
+    <article class="card"
+      data-id="F7t8ElO97yk"
+      data-title="Walking Walking"
+      data-category="Music"
+      data-channel="Super Simple Songs"
+      data-tags="walking kids song music nursery rhyme">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'F7t8ElO97yk')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/LrAtBtQnvCE/hqdefault.jpg"
-            alt="Fun Kids Music">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/F7t8ElO97yk/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Walking Walking 🚶
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Fun Kids Music 🎵
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Super Simple Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 6 -->
-      <article
-        class="video-card"
-        data-title="Sing Along Kids"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music sing along children songs"
-        onclick="playVideo('HI5upQGIqmY')"
-      >
+    <article class="card"
+      data-id="020g-0hhCAU"
+      data-title="Baby Shark"
+      data-category="Music"
+      data-channel="Kids Music"
+      data-tags="baby shark shark kids music dance">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'020g-0hhCAU')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/HI5upQGIqmY/hqdefault.jpg"
-            alt="Sing Along Kids">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/020g-0hhCAU/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Baby Shark 🦈
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Sing Along Kids 🎤
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Music
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 7 -->
-      <article
-        class="video-card"
-        data-title="Happy Kids Song"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music happy song children nursery rhyme"
-        onclick="playVideo('UiFjZcOrMO0')"
-      >
+    <article class="card"
+      data-id="n38kGst16sI"
+      data-title="Twinkle Twinkle Little Star"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="twinkle star kids music nursery rhyme">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'n38kGst16sI')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/UiFjZcOrMO0/hqdefault.jpg"
-            alt="Happy Kids Song">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/n38kGst16sI/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Twinkle Twinkle Little Star ⭐
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Happy Kids Song 🌈
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
+    </article>
 
 
-      <!-- VIDEO 8 -->
-      <article
-        class="video-card"
-        data-title="Kids Music Fun"
-        data-category="Music"
-        data-channel="Kids Music"
-        data-tags="kids music fun children songs nursery rhyme"
-        onclick="playVideo('EN1SJT76JoY')"
-      >
+    <article class="card"
+      data-id="ABEVNHqmbJ4"
+      data-title="Car Wash Song"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="car wash song kids music cars">
 
-        <div class="thumbnail">
+      <button class="favorite"
+        onclick="toggleFavorite(event,'ABEVNHqmbJ4')">
+        ♡
+      </button>
 
-          <img
-            src="https://img.youtube.com/vi/EN1SJT76JoY/hqdefault.jpg"
-            alt="Kids Music Fun">
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/ABEVNHqmbJ4/hqdefault.jpg">
 
-          <div class="play-icon">▶</div>
-
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Car Wash Song 🚗
         </div>
-
-        <div class="video-info">
-
-          <div class="channel-icon">
-            M
-          </div>
-
-          <div>
-
-            <div class="video-title">
-              Kids Music Fun 🎶
-            </div>
-
-            <div class="video-meta">
-              Kids Music • Music
-            </div>
-
-          </div>
-
+        <div class="channel">
+          Kids Songs
         </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-      </article>
-
-    </div>
+    </article>
 
 
-    <div
-      class="no-results"
-      id="noResults">
+    <article class="card"
+      data-id="Sjwl23rk6Tg"
+      data-title="Bedtime Song"
+      data-category="Music"
+      data-channel="Kids Songs"
+      data-tags="bedtime sleep song kids music">
 
-      <div class="emoji">🔎</div>
+      <button class="favorite"
+        onclick="toggleFavorite(event,'Sjwl23rk6Tg')">
+        ♡
+      </button>
 
-      <h2>No videos found</h2>
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/Sjwl23rk6Tg/hqdefault.jpg">
 
-      <p>
-        Try searching for another kids video.
-      </p>
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Bedtime Song 🌙
+        </div>
+        <div class="channel">
+          Kids Songs
+        </div>
+        <span class="badge">MUSIC</span>
+      </div>
 
-    </div>
+    </article>
 
-  </section>
+
+    <article class="card"
+      data-id="idzvY4nyK3k"
+      data-title="Halloween Dance Song"
+      data-category="Music"
+      data-channel="Kids Music"
+      data-tags="halloween dance kids song music">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'idzvY4nyK3k')">
+        ♡
+      </button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/idzvY4nyK3k/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Halloween Dance 🎃
+        </div>
+        <div class="channel">
+          Kids Music
+        </div>
+        <span class="badge">MUSIC</span>
+      </div>
+
+    </article>
+
+
+    <article class="card"
+      data-id="TSmMv12TucI"
+      data-title="Fun Kids Video"
+      data-category="Kids"
+      data-channel="Kids Fun"
+      data-tags="kids fun children cartoon">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'TSmMv12TucI')">
+        ♡
+      </button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/TSmMv12TucI/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">
+          Fun Kids Video 🎨
+        </div>
+        <div class="channel">
+          Kids Fun
+        </div>
+        <span class="badge">KIDS</span>
+      </div>
+
+    </article>
+
+
+    <!-- YOUR 18 NEW VIDEOS -->
+
+
+    <article class="card"
+      data-id="QA48wTGbU7A"
+      data-title="Kids Video 1"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'QA48wTGbU7A')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/QA48wTGbU7A/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 1 🧸</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="60g14SQZxlg"
+      data-title="Kids Video 2"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'60g14SQZxlg')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/60g14SQZxlg/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 2 🐻</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="GDMel6oO2fU"
+      data-title="Kids Video 3"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'GDMel6oO2fU')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/GDMel6oO2fU/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 3 🦄</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="_Tr9Ncoo-yw"
+      data-title="Kids Video 4"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'_Tr9Ncoo-yw')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/_Tr9Ncoo-yw/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 4 🚗</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="2E0hHjSwdW4"
+      data-title="Kids Video 5"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'2E0hHjSwdW4')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/2E0hHjSwdW4/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 5 🌈</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="SrDTSB5bVS4"
+      data-title="Kids Video 6"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'SrDTSB5bVS4')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/SrDTSB5bVS4/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 6 🐰</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="Oq61TxejZ5g"
+      data-title="Kids Video 7"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'Oq61TxejZ5g')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/Oq61TxejZ5g/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 7 🐼</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="uiwOgoi3E_w"
+      data-title="Kids Video 8"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'uiwOgoi3E_w')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/uiwOgoi3E_w/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 8 🐨</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="WjZ2f71dFck"
+      data-title="Kids Video 9"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'WjZ2f71dFck')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/WjZ2f71dFck/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 9 🦁</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="qAZmYj1m0qg"
+      data-title="Kids Video 10"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'qAZmYj1m0qg')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/qAZmYj1m0qg/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 10 🐯</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="HvNdJ2RCReg"
+      data-title="Kids Video 11"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'HvNdJ2RCReg')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/HvNdJ2RCReg/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 11 🐸</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="9YzG5nVc6sg"
+      data-title="Kids Video 12"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'9YzG5nVc6sg')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/9YzG5nVc6sg/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 12 🐵</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="ygcN65SlLFg"
+      data-title="Kids Video 13"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'ygcN65SlLFg')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/ygcN65SlLFg/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 13 🐼</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="TJmTHuuYx3k"
+      data-title="Kids Video 14"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'TJmTHuuYx3k')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/TJmTHuuYx3k/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 14 🐨</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="YzXi5HpgYGc"
+      data-title="Kids Video 15"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'YzXi5HpgYGc')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/YzXi5HpgYGc/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 15 🐻</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="Wm4R8d0d8kU"
+      data-title="Kids Video 16"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'Wm4R8d0d8kU')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/Wm4R8d0d8kU/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 16 🦊</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="HY-ofY5jlO4"
+      data-title="Kids Video 17"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'HY-ofY5jlO4')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/HY-ofY5jlO4/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 17 🐰</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+    <article class="card"
+      data-id="KLfXETqLCiM"
+      data-title="Kids Video 18"
+      data-category="Kids"
+      data-channel="YouTube Kids"
+      data-tags="kids children fun">
+
+      <button class="favorite"
+        onclick="toggleFavorite(event,'KLfXETqLCiM')">♡</button>
+
+      <img class="thumb"
+        src="https://i.ytimg.com/vi/KLfXETqLCiM/hqdefault.jpg">
+
+      <div class="cardInfo">
+        <div class="cardTitle">Kids Video 18 🦄</div>
+        <div class="channel">YouTube Kids</div>
+        <span class="badge">KIDS</span>
+      </div>
+    </article>
+
+
+  </div>
+
+
+  <div class="noResults" id="noResults">
+
+    <div>🔎</div>
+
+    <h2>No videos found</h2>
+
+    <p>Try another search.</p>
+
+  </div>
 
 </main>
 
 </div>
 
 
-<!-- PLAYER MODAL -->
-<div
-  class="modal"
-  id="playerModal">
+<!-- VIDEO PLAYER -->
 
-  <div class="player">
+<div class="modal"
+     id="playerModal"
+     onclick="backdropClose(event)">
 
-    <button
-      class="close"
-      onclick="closePlayer()">
+  <div class="modalBox">
+
+    <button class="close"
+            onclick="closePlayer()">
       ×
     </button>
 
     <iframe
       id="videoPlayer"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      class="videoFrame"
+      src=""
+      allow="autoplay; encrypted-media; picture-in-picture"
       allowfullscreen>
     </iframe>
 
@@ -963,20 +1329,18 @@ header{
 </div>
 
 
-<!-- UPLOAD MODAL -->
-<div
-  class="modal"
-  id="uploadModal">
+<!-- ADD VIDEO -->
 
-  <div class="upload-box">
+<div class="modal"
+     id="uploadModal">
 
-    <button
-      class="close"
-      onclick="closeUpload()">
-      ×
-    </button>
+  <div class="uploadBox">
 
-    <h2>Add Kids Video</h2>
+    <h2>➕ Add Kids Video</h2>
+
+    <p>
+      Add any YouTube video to your website.
+    </p>
 
     <input
       id="videoTitle"
@@ -988,10 +1352,14 @@ header{
       type="text"
       placeholder="Paste YouTube URL">
 
-    <button
-      class="add"
-      onclick="addVideo()">
+    <button onclick="addVideo()">
       Add Video
+    </button>
+
+    <button
+      class="cancel"
+      onclick="closeUpload()">
+      Cancel
     </button>
 
   </div>
@@ -1001,30 +1369,12 @@ header{
 
 <script>
 
-/* PLAYER */
+/* =========================
+   VARIABLES
+========================= */
 
-function playVideo(id){
-
-  document.getElementById("videoPlayer").src =
-    "https://www.youtube.com/embed/" +
-    id +
-    "?autoplay=1";
-
-  document.getElementById("playerModal")
-    .classList.add("show");
-}
-
-
-function closePlayer(){
-
-  document.getElementById("playerModal")
-    .classList.remove("show");
-
-  document.getElementById("videoPlayer").src="";
-}
-
-
-/* SEARCH */
+const grid =
+  document.getElementById("videoGrid");
 
 const searchInput =
   document.getElementById("searchInput");
@@ -1032,22 +1382,86 @@ const searchInput =
 const searchBtn =
   document.getElementById("searchBtn");
 
+const noResults =
+  document.getElementById("noResults");
+
+const resultsInfo =
+  document.getElementById("resultsInfo");
+
+const sectionTitle =
+  document.getElementById("sectionTitle");
+
+let currentCategory = "All";
+
+let favorites =
+  JSON.parse(
+    localStorage.getItem("kidsFavorites") || "[]"
+  );
+
+
+/* =========================
+   PLAY VIDEO
+========================= */
+
+function playVideo(id){
+
+  document.getElementById("videoPlayer").src =
+    "https://www.youtube.com/embed/" +
+    encodeURIComponent(id) +
+    "?autoplay=1&rel=0";
+
+  document.getElementById("playerModal")
+    .style.display = "flex";
+}
+
+
+/* =========================
+   CLOSE VIDEO
+========================= */
+
+function closePlayer(){
+
+  document.getElementById("playerModal")
+    .style.display = "none";
+
+  document.getElementById("videoPlayer").src = "";
+
+}
+
+
+/* =========================
+   BACKDROP
+========================= */
+
+function backdropClose(event){
+
+  if(event.target.id === "playerModal"){
+    closePlayer();
+  }
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
 
 function searchVideos(){
 
   const query =
-    searchInput.value
-      .trim()
-      .toLowerCase();
+    searchInput.value.trim().toLowerCase();
+
+  const words =
+    query.split(/\s+/).filter(Boolean);
 
   const cards =
-    document.querySelectorAll(".video-card");
+    [...document.querySelectorAll(".card")];
 
-  let found=0;
+  let visible = 0;
 
-  cards.forEach(card=>{
+  cards.forEach(card => {
 
-    const searchableText = (
+    const searchable = (
 
       card.dataset.title + " " +
       card.dataset.category + " " +
@@ -1056,74 +1470,60 @@ function searchVideos(){
 
     ).toLowerCase();
 
-    const words =
-      query.split(/\s+/)
-        .filter(Boolean);
+    const categoryMatch =
+      currentCategory === "All" ||
+      card.dataset.category === currentCategory;
 
-    const matches =
-      query === "" ||
+    const searchMatch =
+      !words.length ||
       words.every(word =>
-        searchableText.includes(word)
+        searchable.includes(word)
       );
 
-    if(matches){
+    const show =
+      categoryMatch && searchMatch;
 
-      card.style.display="";
-      found++;
+    card.style.display =
+      show ? "" : "none";
 
-    }else{
-
-      card.style.display="none";
-
+    if(show){
+      visible++;
     }
 
   });
 
+  sectionTitle.textContent =
+    query
+      ? "Search Results"
+      : "Kids Videos";
 
-  document.querySelectorAll(".category")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
+  resultsInfo.textContent =
+    visible +
+    " video" +
+    (visible === 1 ? "" : "s");
 
+  noResults.style.display =
+    visible === 0
+      ? "block"
+      : "none";
 
-  document.getElementById("sectionTitle")
-    .textContent =
-      query
-        ? "Search Results"
-        : "Kids Videos";
-
-
-  document.getElementById("resultsInfo")
-    .textContent =
-      query
-        ? found +
-          " video" +
-          (found===1 ? "" : "s") +
-          " found for \"" +
-          query +
-          "\""
-        : "Browse fun kids videos";
-
-
-  document.getElementById("noResults")
-    .style.display =
-      found===0
-        ? "block"
-        : "none";
 }
 
+
+/* =========================
+   SEARCH EVENTS
+========================= */
 
 searchBtn.addEventListener(
   "click",
   searchVideos
 );
 
-
 searchInput.addEventListener(
   "keydown",
-  function(e){
+  function(event){
 
-    if(e.key==="Enter"){
+    if(event.key === "Enter"){
       searchVideos();
     }
 
@@ -1131,347 +1531,508 @@ searchInput.addEventListener(
 );
 
 
-/* CATEGORY */
+/* =========================
+   CATEGORY
+========================= */
 
 function filterCategory(category,button){
 
-  searchInput.value="";
+  currentCategory = category;
 
-  document.querySelectorAll(".category")
+  searchInput.value = "";
+
+  document.querySelectorAll(".cat")
     .forEach(btn =>
       btn.classList.remove("active")
     );
 
-  if(button){
+  if(button.classList.contains("cat")){
     button.classList.add("active");
   }
 
+  document.querySelectorAll(".sideBtn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  if(button.classList.contains("sideBtn")){
+    button.classList.add("active");
+  }
+
+  sectionTitle.textContent =
+    category === "Music"
+      ? "🎵 Kids Music"
+      : category === "Kids"
+        ? "🧸 Kids Videos"
+        : "Kids Videos";
+
+  searchVideos();
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function showAll(button){
+
+  currentCategory = "All";
+
+  searchInput.value = "";
+
+  document.querySelectorAll(".cat")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  document.querySelector(".cat")
+    .classList.add("active");
+
+  document.querySelectorAll(".sideBtn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  sectionTitle.textContent =
+    "Kids Videos";
+
+  searchVideos();
+
+}
+
+
+/* =========================
+   TRENDING
+========================= */
+
+function showTrending(button){
+
+  currentCategory = "All";
+
+  searchInput.value = "";
+
+  document.querySelectorAll(".cat")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  document.querySelectorAll(".sideBtn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  sectionTitle.textContent =
+    "🔥 Trending Kids Videos";
+
+  searchVideos();
+
+}
+
+
+/* =========================
+   FAVORITES
+========================= */
+
+function showFavorites(button){
+
+  searchInput.value = "";
+
+  document.querySelectorAll(".cat")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  document.querySelectorAll(".sideBtn")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
   const cards =
-    document.querySelectorAll(".video-card");
+    document.querySelectorAll(".card");
 
-  let found=0;
+  let visible = 0;
 
-  cards.forEach(card=>{
+  cards.forEach(card => {
 
-    if(
-      category==="All" ||
-      card.dataset.category===category
-    ){
+    if(favorites.includes(card.dataset.id)){
 
-      card.style.display="";
-      found++;
+      card.style.display = "";
+      visible++;
 
     }else{
 
-      card.style.display="none";
+      card.style.display = "none";
 
     }
 
   });
 
+  sectionTitle.textContent =
+    "❤️ Favorites";
 
-  document.getElementById("sectionTitle")
-    .textContent =
-      category==="All"
-        ? "Kids Videos"
-        : category==="Music"
-          ? "Kids Music"
-          : "Kids";
+  resultsInfo.textContent =
+    visible +
+    " video" +
+    (visible === 1 ? "" : "s");
 
+  noResults.style.display =
+    visible === 0
+      ? "block"
+      : "none";
 
-  document.getElementById("resultsInfo")
-    .textContent =
-      found +
-      " video" +
-      (found===1 ? "" : "s");
-
-  document.getElementById("noResults")
-    .style.display="none";
 }
 
 
-/* HOME */
+/* =========================
+   FAVORITE
+========================= */
 
-function showAll(button){
+function toggleFavorite(event,id){
 
-  document.querySelectorAll(".sidebar button")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
+  event.stopPropagation();
 
-  button.classList.add("active");
+  if(favorites.includes(id)){
 
-  searchInput.value="";
+    favorites =
+      favorites.filter(
+        item => item !== id
+      );
 
-  filterCategory("All");
+  }else{
 
-  document.querySelectorAll(".category")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
+    favorites.push(id);
 
-  document.querySelector(".category")
-    .classList.add("active");
+  }
+
+  localStorage.setItem(
+    "kidsFavorites",
+    JSON.stringify(favorites)
+  );
+
+  updateFavoriteButtons();
+
 }
 
 
-/* TRENDING */
+/* =========================
+   UPDATE HEARTS
+========================= */
 
-function showTrending(button){
+function updateFavoriteButtons(){
 
-  document.querySelectorAll(".sidebar button")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
+  document.querySelectorAll(".favorite")
+    .forEach(button => {
 
-  button.classList.add("active");
+      const card =
+        button.closest(".card");
 
-  searchInput.value="";
+      if(!card) return;
 
-  document.querySelectorAll(".video-card")
-    .forEach(card =>
-      card.style.display=""
-    );
+      const id =
+        card.dataset.id;
 
-  document.getElementById("sectionTitle")
-    .textContent="🔥 Trending Kids Videos";
+      button.textContent =
+        favorites.includes(id)
+          ? "♥"
+          : "♡";
 
-  document.getElementById("resultsInfo")
-    .textContent="Popular videos";
+    });
 
-  document.getElementById("noResults")
-    .style.display="none";
 }
 
 
-/* FAVORITES */
-
-function showFavorites(button){
-
-  document.querySelectorAll(".sidebar button")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  searchInput.value="";
-
-  document.querySelectorAll(".video-card")
-    .forEach(card =>
-      card.style.display="none"
-    );
-
-  document.getElementById("sectionTitle")
-    .textContent="❤️ Favorites";
-
-  document.getElementById("resultsInfo")
-    .textContent=
-      "Your favorite videos will appear here.";
-
-  document.getElementById("noResults")
-    .style.display="block";
-}
-
-
-/* UPLOAD */
+/* =========================
+   UPLOAD MODAL
+========================= */
 
 function openUpload(){
 
   document.getElementById("uploadModal")
-    .classList.add("show");
+    .style.display = "flex";
+
 }
 
 
 function closeUpload(){
 
   document.getElementById("uploadModal")
-    .classList.remove("show");
+    .style.display = "none";
+
 }
 
 
-/* GET YOUTUBE ID */
+/* =========================
+   GET YOUTUBE ID
+========================= */
 
 function getYouTubeID(url){
 
-  const patterns=[
+  try{
 
-    /youtu\.be\/([^?&]+)/,
+    const parsed =
+      new URL(url);
 
-    /youtube\.com\/watch\?v=([^?&]+)/,
+    if(
+      parsed.hostname.includes("youtu.be")
+    ){
 
-    /youtube\.com\/embed\/([^?&]+)/,
+      return parsed.pathname
+        .replace("/","")
+        .split("/")[0];
 
-    /youtube\.com\/shorts\/([^?&]+)/
-
-  ];
-
-  for(const pattern of patterns){
-
-    const match=url.match(pattern);
-
-    if(match){
-      return match[1];
     }
+
+    if(
+      parsed.searchParams.get("v")
+    ){
+
+      return parsed.searchParams.get("v");
+
+    }
+
+    const parts =
+      parsed.pathname.split("/");
+
+    const embed =
+      parts.indexOf("embed");
+
+    if(embed !== -1){
+      return parts[embed + 1];
+    }
+
+    const shorts =
+      parts.indexOf("shorts");
+
+    if(shorts !== -1){
+      return parts[shorts + 1];
+    }
+
+  }catch(error){
+
+    return null;
 
   }
 
   return null;
+
 }
 
 
-/* ADD VIDEO */
+/* =========================
+   ADD VIDEO
+========================= */
 
 function addVideo(){
 
   const title =
-    document.getElementById("videoTitle")
-      .value.trim();
+    document
+      .getElementById("videoTitle")
+      .value
+      .trim();
 
   const url =
-    document.getElementById("videoUrl")
-      .value.trim();
+    document
+      .getElementById("videoUrl")
+      .value
+      .trim();
 
-  if(!title || !url){
+  const id =
+    getYouTubeID(url);
+
+  if(!title){
 
     alert(
-      "Please enter a title and YouTube URL."
+      "Please enter a video title."
     );
 
     return;
   }
-
-  const id=getYouTubeID(url);
 
   if(!id){
 
     alert(
-      "Please enter a valid YouTube video URL."
+      "Please enter a valid YouTube URL."
     );
 
     return;
   }
 
+  const duplicate =
+    [...document.querySelectorAll(".card")]
+      .some(card =>
+        card.dataset.id === id
+      );
+
+  if(duplicate){
+
+    alert(
+      "This video is already on the website."
+    );
+
+    return;
+  }
 
   const card =
     document.createElement("article");
 
-  card.className="video-card";
+  card.className = "card";
 
-  card.dataset.title=title;
-  card.dataset.category="Music";
-  card.dataset.channel="Kids Music";
-  card.dataset.tags=
-    "kids music children songs video";
+  card.dataset.id = id;
+  card.dataset.title = title;
+  card.dataset.category = "Kids";
+  card.dataset.channel = "Added Video";
+  card.dataset.tags =
+    title.toLowerCase() +
+    " kids children fun";
 
+  card.innerHTML = `
 
-  card.onclick=function(){
-    playVideo(id);
-  };
+    <button
+      class="favorite"
+      onclick="toggleFavorite(event,'${id}')">
+      ♡
+    </button>
 
+    <img
+      class="thumb"
+      src="https://i.ytimg.com/vi/${id}/hqdefault.jpg"
+      alt="Kids video thumbnail">
 
-  card.innerHTML=`
+    <div class="cardInfo">
 
-    <div class="thumbnail">
-
-      <img
-        src="https://img.youtube.com/vi/${id}/hqdefault.jpg"
-        alt="${escapeHTML(title)}">
-
-      <div class="play-icon">
-        ▶
+      <div class="cardTitle">
+        ${escapeHTML(title)}
       </div>
 
-    </div>
-
-    <div class="video-info">
-
-      <div class="channel-icon">
-        M
+      <div class="channel">
+        Added Video
       </div>
 
-      <div>
-
-        <div class="video-title">
-          ${escapeHTML(title)}
-        </div>
-
-        <div class="video-meta">
-          Kids Music • Music
-        </div>
-
-      </div>
+      <span class="badge">
+        KIDS
+      </span>
 
     </div>
   `;
 
+  card.addEventListener(
+    "click",
+    function(event){
 
-  document.getElementById("videoGrid")
-    .prepend(card);
+      if(
+        event.target.closest(".favorite")
+      ){
+        return;
+      }
 
+      playVideo(id);
+
+    }
+  );
+
+  grid.prepend(card);
 
   document.getElementById("videoTitle")
-    .value="";
+    .value = "";
 
   document.getElementById("videoUrl")
-    .value="";
+    .value = "";
 
   closeUpload();
 
-  alert("Video added successfully!");
+  updateFavoriteButtons();
+
+  currentCategory = "All";
+
+  document.querySelectorAll(".cat")
+    .forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+  document.querySelector(".cat")
+    .classList.add("active");
+
+  searchVideos();
+
 }
 
 
-/* SAFE TITLE */
+/* =========================
+   ESCAPE HTML
+========================= */
 
 function escapeHTML(text){
 
-  const div=
-    document.createElement("div");
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
-  div.textContent=text;
-
-  return div.innerHTML;
 }
 
 
-/* MODALS */
+/* =========================
+   EXISTING CARD CLICKS
+========================= */
 
-document.getElementById("playerModal")
-  .addEventListener("click",function(e){
+document.querySelectorAll(".card")
+  .forEach(card => {
 
-    if(e.target===this){
+    card.addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target.closest(".favorite")
+        ){
+          return;
+        }
+
+        playVideo(card.dataset.id);
+
+      }
+    );
+
+  });
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
       closePlayer();
-    }
-
-  });
-
-
-document.getElementById("uploadModal")
-  .addEventListener("click",function(e){
-
-    if(e.target===this){
       closeUpload();
+
     }
-
-  });
-
-
-/* ESC */
-
-document.addEventListener("keydown",function(e){
-
-  if(e.key==="Escape"){
-
-    closePlayer();
-    closeUpload();
 
   }
+);
 
-});
+
+/* =========================
+   START
+========================= */
+
+updateFavoriteButtons();
+
+searchVideos();
 
 </script>
 
 </body>
 </html>
-
